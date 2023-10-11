@@ -1,0 +1,17 @@
+<div *ngIf="component">
+    <div class="card text-bg-success m-2" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{component.name}}</h5>
+          <p class="card-text">
+            
+            id: {{component.idComponent }}
+          price: {{component.price}}
+          stock: {{component.stock}}
+        
+        </p>
+         <!-- <a href="#" class="btn btn-primary">Go somewhere</a>-->
+         <a   class="nav-link" [routerLink]="'/components'" class="btn btn-primary">Go to components</a>
+        
+        </div>
+      </div>
+    </div>

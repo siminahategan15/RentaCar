@@ -1,0 +1,64 @@
+<h3> User Form</h3>
+    <form #componentForm="ngForm" (ngSubmit)="createUser()" >
+        
+       
+    
+        <div class="form-group">
+          <label for="name">First Name</label>
+          <input type="text" class="form-control" id="firstname"
+                 [(ngModel)]="firstName2" name="firstname">
+        </div>
+    
+        <div class="form-group">
+          <label for="price">Last Name</label>
+          <input type="text" class="form-control" id="lastname"
+                 [(ngModel)]="lastName2" name="lastname">
+        
+        </div>
+        <div class="form-group">
+            <label for="stock">Username</label>
+            <input type="text" class="form-control" id="username"
+                   [(ngModel)]="userName2" name="username">
+          
+          </div>
+    
+    
+        <div class="form-group">
+            <label for="stock">Email</label>
+            <input type="text" class="form-control" id="email"
+                   [(ngModel)]="email2" name="email">
+          
+          </div>
+
+          <div class="form-group">
+            <label for="stock">Password</label>
+            <input type="text" class="form-control" id="password"
+                   [(ngModel)]="password2" name="password">
+          
+          </div>
+    
+        
+    
+    
+          <button type="submit" class="btn btn-info me-2">Create User</button>
+          
+       
+    
+            
+    
+    </form>
+ <div *ngFor="let user of users"> 
+    {{user.idUser }} - {{user.firstName}} - {{user.lastName}} - {{user.email}}  - {{user.password}} - {{user.userName}}
+    
+      <div class="center">
+    
+      <button (click)="showUser(user)" type="button" class="btn btn-primary me-2">Show User</button> 
+    
+      <button (click)="deleteUser(user)" type="button" class="btn btn-danger me-2">Delete</button>
+    
+      <button (click)="updateUser(user)" type="button" class="btn btn-success me-2">Update</button>
+      </div>
+    
+    
+    </div>
+    

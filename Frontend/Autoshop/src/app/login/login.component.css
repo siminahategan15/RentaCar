@@ -1,0 +1,23 @@
+.form-group, .card-body, .btn
+{
+  color:beige;
+  background-color:#563c5c;
+
+}
+.btn
+{
+    margin:10px;
+}
+
+.buttons
+{
+  background-color: #cec8ef;
+  font-weight:bold;
+  display: flex;
+  justify-content: center;
+ 
+}
+label, input
+{
+  margin-left: 10px;;
+}

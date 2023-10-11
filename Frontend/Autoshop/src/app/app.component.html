@@ -1,0 +1,39 @@
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a *ngIf="!this.logged_user" class="navbar-brand" [routerLink]="'/'">Rent a car</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div  *ngIf="this.logged_user "class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="'/cars'" style="color:white">Cars</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="'/components'" style="color:white">Components</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="'/users'" style="color:white">Users</a>
+        </li>
+       </ul>
+    </div>
+    <div *ngIf="this.logged_user;notLogged" style="display:flex; justify-content: flex-end; color:white">
+      <div>
+      <p>Hello, {{this.logged_user.firstName}}</p>
+       <button class="logout-button" (click)="logout()">Logout</button>
+      </div>
+    </div>
+    <ng-template #notLogged>
+      Register
+    </ng-template>
+
+       
+  </div>
+</nav>
+
+<router-outlet>
+
+</router-outlet> 
+
+<!--<app-index-cars></app-index-cars>-->

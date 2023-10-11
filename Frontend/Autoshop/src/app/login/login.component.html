@@ -1,0 +1,50 @@
+<div style="background-color: #e6e6fa;display:flex; justify-content: center;margin-bottom: 20px;">
+    <div>
+    <div>
+    <h1 style="display:flex; justify-content: center">{{ is_register ? 'Register' : 'Login' }}</h1>
+    </div>
+  
+    <form  (ngSubmit)="onSubmit()" class="card" style="width: 20rem">
+        <div style="display: flex;justify-content: center; flex-direction: column;">
+        <div class="form-group">
+        <label for="username">Username</label>
+        <p>
+        <input type="text" id="username" [(ngModel)]="userName2" name="userName2" required style="width: 18rem"></p>
+        </div>
+        <div class="form-group">
+        <label for="password">Password</label>
+        <p>
+        <input type="password" id="password" [(ngModel)]="password2" name="password2" required style="width: 18rem"></p>
+        </div>
+       
+        <ng-container *ngIf="is_register">
+            <div class="form-group">
+            <label for="firstName">First Name</label>
+            <p>
+            <input type="text" id="firstName" [(ngModel)]="firstName2" name="firstName2" style="width: 18rem"></p>
+            </div>
+            <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <p>
+            <input type="text" id="lastName" [(ngModel)]="lastName2" name="lastName2" style="width: 18rem"></p>
+            </div>
+            <div class="form-group">
+            <label for="Email">Email</label>
+            <p>
+            <input type="text" id="Email" [(ngModel)]="email2" name="email2" style="width: 18rem"></p>
+            </div>
+        </ng-container>
+
+       
+        <div class="buttons">
+        <button type="submit" class="btn"   >{{ is_register ? 'Sign-up' : 'Sign-in' }}</button>
+        <button *ngIf="!is_register" (click)="toggleRegistering()" class="btn" >Create Account</button>
+        <button (click)="goToLogin()" class="btn" *ngIf="is_register">Back to Login</button>
+        </div> 
+        </div>
+
+    </form>
+    
+ 
+</div>
+</div>

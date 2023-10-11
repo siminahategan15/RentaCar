@@ -1,0 +1,92 @@
+<div style="background-color: #e6e6fa">
+<div style="display:flex; justify-content: center;margin-bottom: 20px;">
+ <div>
+  <div>
+<h3> Add a Car for renting</h3>
+  </div>
+  <div>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="card" style="width: 20rem">
+    
+   <div style="display: flex;justify-content: center; flex-direction: column;">
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <p>
+      <input type="text"  id="brand"
+             formControlName="brand" style="width:18rem"></p>
+    </div>
+
+    <div class="form-group">
+      <label for="model">Model</label>
+      <p>
+      <input type="text" id="model"
+      formControlName="model" style="width:18rem"></p>
+    
+    </div>
+
+
+    <div class="form-group">
+        <label for="productionYear">Production Year</label>
+        <p>
+        <input type="text" id="productionYear"
+              formControlName="productionYear" style="width:18rem"></p>
+      
+      </div>
+
+      <div class="form-group">
+        <label for="stock">Stock</label>
+        <p>
+        <input type="text" id="stock"
+              formControlName="stock" style="width:18rem"></p>
+      
+      </div>  
+
+  <div class="buttons">
+      <button type="submit" class="btn" style="width: 7rem; display: flex; justify-content: center;" >Create Car</button>
+  </div>
+   </div>
+
+        
+
+</form>
+  </div>
+  </div>
+</div>
+
+
+<div style="display:flex;flex-direction:row;flex-wrap: wrap;justify-content:space-around ">
+<div *ngFor="let car of cars" >
+<div *ngIf="car">
+  <div class="card text-bg-dark m-2" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">{{car.brand}}</h5>
+        <div class="card-text">
+        
+        <div>
+        model: {{car.model}}
+        </div>
+        <div>
+        brand: {{car.brand}}
+        </div>
+        <div>
+        year: {{car.productionYear}}
+        </div>
+      
+      </div>
+      
+      
+      
+      </div>
+      <div class="buttons">
+      <button (click)="showCar(car)" type="button" class="btn" style="width: 5rem;" >Rent</button> 
+
+      <button (click)="deleteCar(car)" type="button" class="btn" style="width: 5rem;">Delete</button>
+    
+     <button (click)="updateCar(car)" type="button" class="btn" style="width: 5rem;">Edit</button>
+    </div>
+    
+    </div>
+  </div>
+</div>
+</div>
+
+</div>

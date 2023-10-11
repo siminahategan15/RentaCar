@@ -1,0 +1,25 @@
+<!--<div *ngIf="car">
+    <p> id: {{car.idCar}}</p>
+    <p> model: {{car.model}}</p>
+    <p> brand: {{car.brand}}</p>
+    <p> year: {{car.productionYear}}</p>
+</div>
+-->
+<div *ngIf="car">
+<div class="card text-bg-success m-2" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{car.brand}}</h5>
+      <p class="card-text">
+        
+        id: {{car.idCar}}
+      model: {{car.model}}
+      brand: {{car.brand}}
+      year: {{car.productionYear}}
+    
+    </p>
+     <!-- <a href="#" class="btn btn-primary">Go somewhere</a>-->
+     <a   class="nav-link" [routerLink]="'/cars'" class="btn btn-primary">Go to cars</a>
+    
+    </div>
+  </div>
+</div>

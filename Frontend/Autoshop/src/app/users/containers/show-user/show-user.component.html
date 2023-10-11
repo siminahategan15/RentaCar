@@ -1,0 +1,17 @@
+<div *ngIf="user">
+    <div class="card text-bg-success m-2" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{user.firstName}}{{user.lastName}}</h5>
+          <p class="card-text">
+            
+            id: {{user.idUser }}
+            username: {{user.userName}}
+          email: {{user.email}}
+        
+        </p>
+         <!-- <a href="#" class="btn btn-primary">Go somewhere</a>-->
+         <a   class="nav-link" [routerLink]="'/users'" class="btn btn-primary">Go to users</a>
+        
+        </div>
+      </div>
+    </div>

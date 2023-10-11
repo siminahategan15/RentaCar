@@ -1,0 +1,60 @@
+.carrow{
+    width: 30rem;
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+   /* div {
+
+    height: 2rem;
+    }
+*/
+}
+.center ,h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+  
+  }
+  h3{
+    margin:20px;
+  }
+
+  .btn-bd-primary {
+    --bs-btn-font-weight: 600;
+    --bs-btn-color: var(--bs-white);
+    --bs-btn-bg: var(--bd-violet-bg);
+    --bs-btn-border-color: var(--bd-violet-bg);
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: #{shade-color($bd-violet, 10%)};
+    --bs-btn-hover-border-color: #{shade-color($bd-violet, 10%)};
+    --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+    --bs-btn-active-color: var(--bs-btn-hover-color);
+    --bs-btn-active-bg: #{shade-color($bd-violet, 20%)};
+    --bs-btn-active-border-color: #{shade-color($bd-violet, 20%)};
+  }
+
+
+  .buttons
+  {
+    display:flex; 
+    justify-content: space-around;
+     
+  }
+ 
+.form-group, .card-body, .buttons
+{
+  color:beige;
+  background-color:#563c5c;
+}
+
+.btn
+{
+  background-color: #cec8ef;
+  margin-bottom: 5px;
+  font-weight:bold;
+}
+label, input
+{
+  margin-left: 10px;;
+}
