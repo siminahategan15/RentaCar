@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { IndexCarsComponent } from './cars/containers/index-cars/index-cars.component';//aici
 import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
-import { IndexComponentsComponent } from './components/containers/index-components/index-components.component';
 import { LoginComponent } from './login/login.component';
 import { ShowUserComponent } from './users/containers/show-user/show-user.component';
 import { IndexUserComponent } from './users/containers/index-user/index-user.component';//aici
@@ -14,7 +13,7 @@ import { IndexUserComponent } from './users/containers/index-user/index-user.com
   declarations: [
     AppComponent,
     IndexCarsComponent, //aici
-    IndexComponentsComponent, LoginComponent, ShowUserComponent, IndexUserComponent,// aici 
+   LoginComponent, ShowUserComponent, IndexUserComponent,// aici 
 
   ],
   imports: [
