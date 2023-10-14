@@ -32,5 +32,18 @@
 }
 label, input
 {
-  margin-left: 10px;;
+  margin-left: 10px;
+}
+
+h3{
+  padding-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+div[style="background-color: #e6e6fa;"] {
+  display: flex;
+  justify-content: center;
+  flex-direction:column;
+ 
 }
