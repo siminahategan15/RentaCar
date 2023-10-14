@@ -16,6 +16,8 @@ export class IndexUserComponent {
   userName2:string='';
   password2:string='';
   email2:string='';
+  isEditing: boolean = false;
+  editingUser!: IUser ;
 
   constructor(private userService:UsersService, private router: Router) {}
 
@@ -45,7 +47,7 @@ export class IndexUserComponent {
 
     };
 
-// this will be replaced with form value
+
   this.userService.createUser(user).subscribe(
     res => this.users.push(res), 
   );
@@ -64,22 +66,37 @@ export class IndexUserComponent {
   }
 
 
-  updateUser(user:IUser)
+  updateUser()
   {
-    const updatedUser: IUser = {
-      firstName:this.firstName2,
-      lastName:this.lastName2,
-      userName:this.userName2,
-      password:this.password2,
-      email:this.email2
-    };
+    if (this.editingUser) {
+      this.userService.updateUser(this.editingUser.idUser, this.editingUser).subscribe(
+        (res) => {
+          const userIndex = this.users.findIndex((u) => u.idUser === this.editingUser.idUser);
+          if (userIndex !== -1) {
+            this.users[userIndex] = { ...this.users[userIndex], ...this.editingUser };
+          }
+          this.isEditing = false;
+        },
+        (error) => {
+          // Handle errors, show a message, or log the error
+          console.error('Error updating user:', error);
+          this.isEditing = false;
+        }
+      );
+    }
+    
+  }
+
+ 
   
-    this.userService.updateUser(user.idUser, updatedUser).subscribe(
-      res => {
-        const userIndex = this.users.indexOf(user);
-          this.users[userIndex] = { ...this.users[userIndex], ...updatedUser };
-        
-      }
-    );
-    } 
-}
+    editUser(user: IUser): void {
+      this.isEditing = true;
+      this.editingUser = { ...user }; 
+    }
+    cancelUpdate(): void {
+      this.isEditing = false;
+    }
+    
+  }
+   
+

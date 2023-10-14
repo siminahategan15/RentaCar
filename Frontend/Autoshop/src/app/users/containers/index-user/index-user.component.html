@@ -1,64 +1,74 @@
-<h3> User Form</h3>
-    <form #componentForm="ngForm" (ngSubmit)="createUser()" >
-        
-       
-    
-        <div class="form-group">
-          <label for="name">First Name</label>
-          <input type="text" class="form-control" id="firstname"
-                 [(ngModel)]="firstName2" name="firstname">
-        </div>
-    
-        <div class="form-group">
-          <label for="price">Last Name</label>
-          <input type="text" class="form-control" id="lastname"
-                 [(ngModel)]="lastName2" name="lastname">
-        
-        </div>
-        <div class="form-group">
-            <label for="stock">Username</label>
-            <input type="text" class="form-control" id="username"
-                   [(ngModel)]="userName2" name="username">
-          
-          </div>
-    
-    
-        <div class="form-group">
-            <label for="stock">Email</label>
-            <input type="text" class="form-control" id="email"
-                   [(ngModel)]="email2" name="email">
-          
-          </div>
-
-          <div class="form-group">
-            <label for="stock">Password</label>
-            <input type="text" class="form-control" id="password"
-                   [(ngModel)]="password2" name="password">
-          
-          </div>
-    
-        
-    
-    
-          <button type="submit" class="btn btn-info me-2">Create User</button>
-          
-       
-    
-            
-    
-    </form>
- <div *ngFor="let user of users"> 
-    {{user.idUser }} - {{user.firstName}} - {{user.lastName}} - {{user.email}}  - {{user.password}} - {{user.userName}}
-    
-      <div class="center">
-    
-      <button (click)="showUser(user)" type="button" class="btn btn-primary me-2">Show User</button> 
-    
-      <button (click)="deleteUser(user)" type="button" class="btn btn-danger me-2">Delete</button>
-    
-      <button (click)="updateUser(user)" type="button" class="btn btn-success me-2">Update</button>
+<div style="background-color: #e6e6fa; display: flex;justify-content: center; flex-direction: column;">
+    <div>
+  <form *ngIf="isEditing" (ngSubmit)="updateUser()" class="card" style="width: 20rem; margin-left:600px">
+    <div style="display: flex; justify-content: center; flex-direction: column;">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <p>
+          <input type="text" id="username" [(ngModel)]="editingUser.userName" name="userName2" required style="width: 18rem">
+        </p>
       </div>
-    
-    
+      <div class="form-group">
+        <label for="password">Password</label>
+        <p>
+          <input type="password" id="password" [(ngModel)]="editingUser.password" name="password2" required style="width: 18rem">
+        </p>
+      </div>
+  
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <p>
+          <input type="text" id="firstName" [(ngModel)]="editingUser.firstName" name="firstName2" style="width: 18rem">
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <p>
+          <input type="text" id="lastName" [(ngModel)]="editingUser.lastName" name="lastName2" style="width: 18rem">
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="Email">Email</label>
+        <p>
+          <input type="text" id="Email" [(ngModel)]="editingUser.email" name="email2" style="width: 18rem">
+        </p>
+      </div>
+  
+      <div class="buttons" style="background-color:#563c5c">
+        <button type="submit" class="btn">Update</button>
+        <button type="button" (click)="cancelUpdate()" class="btn">Cancel</button>
+      </div>
     </div>
-    
+  </form>
+</div>
+
+<div>
+ <h3 class="position"> List of Users</h3>
+  <div style="display:flex;justify-content: center;">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.idUser }}</td>
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td class="buttons">
+  
+          <button (click)="showUser(user)" type="button" class="btn"  class="btn" style="width: 7rem;" >Show User</button>
+          <button (click)="deleteUser(user)" type="button" class="btn"  class="btn" style="width: 5rem;" >Delete</button>
+          <button (click)="editUser(user)" type="button" class="btn"  class="btn" style="width: 5rem;" >Edit</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+  

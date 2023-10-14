@@ -1,0 +1,36 @@
+.position
+{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+.table
+{
+    color:white;
+  width: 600px;
+    background-color:#563c5c;
+   
+}
+.btn
+{
+  background-color: #cec8ef;
+  margin-bottom: 5px;
+  font-weight:bold;
+}
+.buttons
+{
+  display:flex; 
+  justify-content: space-around;
+   
+}
+
+.form-group, .card-body
+{
+  color:beige;
+  background-color:#563c5c;
+
+}
+label, input
+{
+  margin-left: 10px;;
+}
