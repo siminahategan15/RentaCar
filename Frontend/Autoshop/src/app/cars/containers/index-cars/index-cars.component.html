@@ -1,6 +1,9 @@
 <div style="background-color: #e6e6fa">
 <div style="display:flex; justify-content: center;margin-bottom: 20px;">
- <div>
+  <div *ngIf="this.userRole=='user'" >
+    <h3>Rent a car</h3>
+  </div>
+ <div *ngIf="this.userRole=='admin'" >
   <div>
 <h3> Add a Car for renting</h3>
   </div>

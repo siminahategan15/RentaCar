@@ -21,7 +21,7 @@ export class IndexCarsComponent implements OnInit {
   productionYear2=0;
   stock2=0;
   checkoutForm:FormGroup;
-
+  userRole:string|null='';
 constructor(
     private carService:CarService,
     private router:Router,
@@ -34,6 +34,9 @@ constructor(
         productionYear:0,
         stock:0
       });
+
+      this.userRole = localStorage.getItem('role');
+    console.log(this.userRole);
     
     }
   

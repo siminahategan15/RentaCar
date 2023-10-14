@@ -18,7 +18,7 @@ export class LoginComponent {
     email2:string='';
     firstName2:string='';
     lastName2:string='';
-
+    role2:string='';
 
     constructor(private userService:UsersService, private router:Router, private auth:LoginService) {}
     ngOnInit(): void {
@@ -46,7 +46,8 @@ export class LoginComponent {
     lastName:this.lastName2,
     userName:this.userName2,
     password:this.password2,
-    email:this.email2
+    email:this.email2,
+    role:this.role2
 
     };
     if(this.is_register)

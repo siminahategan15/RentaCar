@@ -11,22 +11,21 @@ import { Router } from '@angular/router';
 export class IndexUserComponent {
   users!: IUser[];
 
-  firstName2:string='';
-  lastName2:string='';
-  userName2:string='';
-  password2:string='';
-  email2:string='';
   isEditing: boolean = false;
   editingUser!: IUser ;
-
-  constructor(private userService:UsersService, private router: Router) {}
+  userRole:string|null='';
+  
+  constructor(private userService:UsersService, private router: Router) {
+    this.userRole = localStorage.getItem('role');
+    console.log(this.userRole);
+  }
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(res => {
       this.users =res;
     console.log(res);
-  }
-    )
+  });
+
    }
 
    showUser(user: IUser)
@@ -34,26 +33,6 @@ export class IndexUserComponent {
     this.router.navigate([`/users/${user.idUser}`]);
    }
   
-  
-   createUser() {
-   
-    let user:IUser={
-      
-      firstName:this.firstName2,
-    lastName:this.lastName2,
-    userName:this.userName2,
-    password:this.password2,
-    email:this.email2
-
-    };
-
-
-  this.userService.createUser(user).subscribe(
-    res => this.users.push(res), 
-  );
-}
-
-
 
   deleteUser(user: IUser)
   {
@@ -70,7 +49,9 @@ export class IndexUserComponent {
   {
     if (this.editingUser) {
       this.userService.updateUser(this.editingUser.idUser, this.editingUser).subscribe(
-        (res) => {
+        
+        
+          (res) => {
           const userIndex = this.users.findIndex((u) => u.idUser === this.editingUser.idUser);
           if (userIndex !== -1) {
             this.users[userIndex] = { ...this.users[userIndex], ...this.editingUser };
@@ -81,22 +62,20 @@ export class IndexUserComponent {
           // Handle errors, show a message, or log the error
           console.error('Error updating user:', error);
           this.isEditing = false;
-        }
+
+                }
+                    
       );
     }
-    
   }
-
- 
-  
-    editUser(user: IUser): void {
+ editUser(user: IUser): void {
       this.isEditing = true;
       this.editingUser = { ...user }; 
     }
     cancelUpdate(): void {
       this.isEditing = false;
     }
-    
+
   }
    
 

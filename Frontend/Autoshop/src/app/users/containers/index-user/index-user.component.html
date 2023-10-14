@@ -1,36 +1,44 @@
+
 <div style="background-color: #e6e6fa; ">
+  <div *ngIf="this.userRole==='admin'">
     <div style=" display: flex;justify-content: center;">
   <form *ngIf="isEditing" (ngSubmit)="updateUser()" class="card" style="width: 20rem;">
     <div style="display: flex; justify-content: center; flex-direction: column;">
       <div class="form-group">
         <label for="username">Username</label>
         <p>
-          <input type="text" id="username" [(ngModel)]="editingUser.userName" name="userName2" required style="width: 18rem">
+          <input type="text" id="username" [(ngModel)]="editingUser.userName" name="userName" required style="width: 18rem">
         </p>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <p>
-          <input type="password" id="password" [(ngModel)]="editingUser.password" name="password2" required style="width: 18rem">
+          <input type="password" id="password" [(ngModel)]="editingUser.password" name="password" required style="width: 18rem">
         </p>
       </div>
   
       <div class="form-group">
         <label for="firstName">First Name</label>
         <p>
-          <input type="text" id="firstName" [(ngModel)]="editingUser.firstName" name="firstName2" style="width: 18rem">
+          <input type="text" id="firstName" [(ngModel)]="editingUser.firstName" name="firstName" style="width: 18rem">
         </p>
       </div>
       <div class="form-group">
         <label for="lastName">Last Name</label>
         <p>
-          <input type="text" id="lastName" [(ngModel)]="editingUser.lastName" name="lastName2" style="width: 18rem">
+          <input type="text" id="lastName" [(ngModel)]="editingUser.lastName" name="lastName" style="width: 18rem">
         </p>
       </div>
       <div class="form-group">
         <label for="Email">Email</label>
         <p>
-          <input type="text" id="Email" [(ngModel)]="editingUser.email" name="email2" style="width: 18rem">
+          <input type="text" id="Email" [(ngModel)]="editingUser.email" name="email" style="width: 18rem">
+        </p>
+      </div>
+      <div class="form-group">
+        <label for="Role">Role</label>
+        <p>
+          <input type="text" id="Role" [(ngModel)]="editingUser.role" name="role" style="width: 18rem">
         </p>
       </div>
   
@@ -70,5 +78,5 @@
   </table>
   </div>
   </div>
-  </div>
-  
+</div>
+</div>

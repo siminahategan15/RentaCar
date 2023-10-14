@@ -5,5 +5,6 @@ export interface IUser
     lastName:string,
     userName:string,
     password:string,
-    email:string
+    email:string,
+    role:string
 }
