@@ -1,17 +1,23 @@
-<div *ngIf="user">
-    <div class="card text-bg-success m-2" style="width: 18rem;">
+<div style="background-color: #e6e6fa;">
+<div *ngIf="user" style="display:flex; justify-content: center; align-items: center;" >
+    <div class="card" style="width: 25rem;">
         <div class="card-body">
-          <h5 class="card-title">{{user.firstName}}{{user.lastName}}</h5>
-          <p class="card-text">
-            
+          <h5 class="card-title">{{user.firstName}} {{user.lastName}}</h5>
+          <div class="card-text">
+            <div>
             id: {{user.idUser }}
+            </div>
+            <div>
             username: {{user.userName}}
+            </div>
+            <div>
           email: {{user.email}}
+            </div>
         
-        </p>
-         <!-- <a href="#" class="btn btn-primary">Go somewhere</a>-->
-         <a   class="nav-link" [routerLink]="'/users'" class="btn btn-primary">Go to users</a>
+          </div>
+         <a   class="nav-link" [routerLink]="'/users'" class="btn">Go to users</a>
         
         </div>
       </div>
     </div>
+  </div>
