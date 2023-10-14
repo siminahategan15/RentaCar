@@ -55,6 +55,7 @@ namespace AutoShop.Repositories
             existingUser.UserName = updatedUser.UserName;
             existingUser.Password = updatedUser.Password;
             existingUser.Email = updatedUser.Email;
+            existingUser.Role=updatedUser.Role;
             await database.UpdateAsync(existingUser);
             return existingUser;
         }

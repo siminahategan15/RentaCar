@@ -41,14 +41,6 @@ app.MapPost("/cars", async ( [FromBody] Car car) => await CarRepository.AddCar(c
 app.MapPut("/cars/{id}", async ([FromRoute] int id, [FromBody] Car car) => await CarRepository.UpdateCar(id,car));
 app.MapDelete("/cars/{id}", async ([FromRoute] int id) => await CarRepository.DeleteCar(id));
 
-
-app.MapGet("/components", async () => await ComponentsRepository.GetAll());
-app.MapGet("/components/{id}", async ([FromRoute] int id) => await ComponentsRepository.GetComponent(id));
-app.MapPost("/components", async ([FromBody] Component component) => await ComponentsRepository.AddComponent(component));
-app.MapPut("/components/{id}", async ([FromRoute] int id, [FromBody] Component component) => await ComponentsRepository.UpdateComponent(id, component));
-app.MapDelete("/components/{id}", async ([FromRoute] int id) => await ComponentsRepository.DeleteComponent(id));
-
-
 app.MapGet("/users", async () => await UsersRepository.GetAll());
 app.MapGet("/users/{id}", async ([FromRoute] int id) => await UsersRepository.GetUser(id));
 app.MapPost("/users", async ([FromBody] User user) => await UsersRepository.AddUser(user));
