@@ -8,7 +8,7 @@
 <h3> Add a Car for renting</h3>
   </div>
   <div>
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" class="card" style="width: 20rem">
+<form [formGroup]="carForm" (ngSubmit)="onFormSubmit()" class="card" style="width: 20rem">
     
    <div style="display: flex;justify-content: center; flex-direction: column;">
     <div class="form-group">
@@ -43,9 +43,13 @@
       
       </div>  
 
-  <div class="buttons">
-      <button type="submit" class="btn" style="width: 7rem; display: flex; justify-content: center;" >Create Car</button>
-  </div>
+
+      <div class="buttons" style="background-color:#563c5c">
+        <button type="submit" class="btn">{{ editingCar ? 'Update' : 'Create Car' }}</button>
+      </div>
+
+
+  
    </div>
 
         
@@ -80,11 +84,11 @@
       
       </div>
       <div class="buttons">
-      <button (click)="showCar(car)" type="button" class="btn" style="width: 5rem;" >Rent</button> 
+      <button (click)="showCar(car)" type="button" class="btn" style="width: 5rem;" >Details</button> 
 
       <button (click)="deleteCar(car)" type="button" class="btn" style="width: 5rem;">Delete</button>
     
-     <button (click)="updateCar(car)" type="button" class="btn" style="width: 5rem;">Edit</button>
+      <button (click)="editCar(car)" type="button" class="btn" style="width: 5rem;">Edit</button>
     </div>
     
     </div>

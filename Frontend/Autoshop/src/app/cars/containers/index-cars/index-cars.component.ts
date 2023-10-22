@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Observable, isEmpty } from 'rxjs';
 import { CarService } from '../../services/car.service';
 import { ICar } from '../../models/car';
 import { Router } from '@angular/router';
@@ -14,27 +14,22 @@ export class IndexCarsComponent implements OnInit {
 
   cars!: ICar[];
 //adaugare
-  
-  
-  brand2:string='';
-  model2:string='';
-  productionYear2=0;
-  stock2=0;
-  checkoutForm:FormGroup;
+carForm: FormGroup;
+  editingCar: ICar|null=null;
   userRole:string|null='';
 constructor(
     private carService:CarService,
     private router:Router,
     private formBuilder: FormBuilder,
+    private cdr:ChangeDetectorRef
     ){
-      this.checkoutForm=this.formBuilder.group({
 
-        brand:'',
-        model:'',
-        productionYear:0,
-        stock:0
+      this.carForm = this.formBuilder.group({
+        brand: '',
+        model: '',
+        productionYear: 0,
+        stock: 0,
       });
-
       this.userRole = localStorage.getItem('role');
     console.log(this.userRole);
     
@@ -44,12 +39,19 @@ constructor(
   ngOnInit(): void {
     this.carService.getCars().subscribe(res => {
       this.cars =res;
-    console.log(res);
-    this.checkoutForm.patchValue(res[0]);
+   
    }
   
     )
    }
+
+   onFormSubmit() {
+    if (!this.editingCar) {
+      this.createCar();
+    } else {
+      this.updateCar();
+    }
+  }
 
    showCar(car: ICar)
    {
@@ -57,35 +59,18 @@ constructor(
    }
   
   createCar() {
-   
-     let car:ICar={
-      
-      brand:this.brand2,
-    model:this.model2,
-    productionYear: this.productionYear2,
-    stock:this.stock2
-
-    };
-
-// this will be replaced with form value
-  this.carService.createCar(car).subscribe(
-    res => this.cars.push(res), 
-  );
+    const carData = this.carForm.value;
+    this.carService.createCar(carData).subscribe(
+      (res) => {
+        this.cars.push(res);
+        this.carForm.reset(); // Reset the form after a successful create
+      },
+      (error) => {
+        console.error('Error creating car:', error);
+      }
+    );
 }
 
-onSubmit(): void {
-      // Process checkout data here
-
-        this.brand2= this.checkoutForm.get('brand')?.value;
-
-        this.stock2= this.checkoutForm.get('stock')?.value;
-        this.productionYear2= this.checkoutForm.get('productionYear')?.value;
-        this.model2= this.checkoutForm.get('model')?.value;
-;      
-      this.createCar();
-      console.warn('The car has been created', this.checkoutForm.value);
-      this.checkoutForm.reset();
-    }
 
   deleteCar(car: ICar)
   {
@@ -96,21 +81,33 @@ onSubmit(): void {
       }
     )
   }
-
-
-  updateCar(car:ICar)
-  {
-    const updatedCar: ICar = {
-    brand:this.brand2,
-    model:this.model2,
-    productionYear: this.productionYear2,
-    stock:this.stock2
-    };
-    this.carService.updateCar(car.idCar, updatedCar).subscribe(
-      res => {
-        this.checkoutForm.patchValue(car);
-      }
-    );
+  
+  updateCar() {
+    if (this.editingCar) {
+      const updatedCarData = this.carForm.value;
+      this.carService.updateCar(this.editingCar.idCar, updatedCarData).subscribe(
+        (res) => {
+          console.log('Update successful. Response:', res);
+          const carIndex = this.cars.findIndex((c) => c.idCar === this.editingCar!.idCar);
+          if (carIndex !== -1) {
+            this.cars[carIndex] = { ...this.cars[carIndex], ...updatedCarData };
+            console.log('Car updated in the list:', this.cars[carIndex]);
+          }
+          this.editingCar = null;
+          this.carForm.reset();
+        },
+        (error) => {
+          console.error('Error updating car:', error);
+        }
+      );
     }
+  }
+
+  editCar(car: ICar) {
+    this.editingCar = { ...car };
+    this.carForm.patchValue(this.editingCar);
+  }
+  
+   
 
 }
