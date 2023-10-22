@@ -1,0 +1,23 @@
+.buttons
+  {
+    display:flex; 
+    justify-content: space-around;
+     
+  }
+ 
+.form-group, .card-body, .buttons
+{
+  color:beige;
+  background-color:#563c5c;
+}
+
+.btn
+{
+  background-color: #cec8ef;
+  margin-bottom: 5px;
+  font-weight:bold;
+}
+label, input
+{
+  margin-left: 10px;;
+}

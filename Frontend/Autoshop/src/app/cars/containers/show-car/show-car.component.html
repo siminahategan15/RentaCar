@@ -1,25 +1,30 @@
-<!--<div *ngIf="car">
-    <p> id: {{car.idCar}}</p>
-    <p> model: {{car.model}}</p>
-    <p> brand: {{car.brand}}</p>
-    <p> year: {{car.productionYear}}</p>
-</div>
--->
+<div style="background-color: #e6e6fa; display:flex;align-items: center;justify-content: center;flex-grow: 1;">
 <div *ngIf="car">
-<div class="card text-bg-success m-2" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{car.brand}}</h5>
-      <p class="card-text">
-        
-        id: {{car.idCar}}
-      model: {{car.model}}
-      brand: {{car.brand}}
-      year: {{car.productionYear}}
+<div class="card text-bg-dark m-2" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{car.brand}}</h5>
+    <div class="card-text">
     
-    </p>
-     <!-- <a href="#" class="btn btn-primary">Go somewhere</a>-->
-     <a   class="nav-link" [routerLink]="'/cars'" class="btn btn-primary">Go to cars</a>
-    
+    <div>
+    model: {{car.model}}
     </div>
+    <div>
+    brand: {{car.brand}}
+    </div>
+    <div>
+    year: {{car.productionYear}}
+    </div>
+    stock: {{car.stock}}
+  
   </div>
+  
+  
+  
+  </div>
+  <div class="buttons">
+    <a   class="nav-link" [routerLink]="'/cars'" class="btn">Go to cars</a>
+</div>
+
+</div>
+</div>
 </div>
