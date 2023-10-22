@@ -86,9 +86,9 @@
       <div class="buttons">
       <button (click)="showCar(car)" type="button" class="btn" style="width: 5rem;" >Details</button> 
 
-      <button (click)="deleteCar(car)" type="button" class="btn" style="width: 5rem;">Delete</button>
+      <button *ngIf="this.userRole=='admin'" (click)="deleteCar(car)" type="button" class="btn" style="width: 5rem;">Delete</button>
     
-      <button (click)="editCar(car)" type="button" class="btn" style="width: 5rem;">Edit</button>
+      <button *ngIf="this.userRole=='admin'" (click)="editCar(car)" type="button" class="btn" style="width: 5rem;">Edit</button>
     </div>
     
     </div>
