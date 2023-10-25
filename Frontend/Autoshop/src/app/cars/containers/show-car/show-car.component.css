@@ -11,13 +11,26 @@
   background-color:#563c5c;
 }
 
-.btn
-{
-  background-color: #cec8ef;
-  margin-bottom: 5px;
-  font-weight:bold;
-}
+
 label, input
 {
   margin-left: 10px;;
 }
+
+.btn {
+ 
+  background-color: #cec8ef;
+  margin: 5px;
+  font-weight:bold;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out; 
+}
+.card{
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out; 
+}
+.btn:hover, .card:hover {
+  transform: scale(1.1);
+}
+

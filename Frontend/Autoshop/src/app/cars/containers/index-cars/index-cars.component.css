@@ -42,7 +42,7 @@
      
   }
  
-.form-group, .card-body, .buttons
+.form-group, .card-body, .buttons, form
 {
   color:beige;
   background-color:#563c5c;
@@ -57,4 +57,27 @@
 label, input
 {
   margin-left: 10px;;
+}
+
+.card{
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out; 
+}
+
+.card:hover
+{
+  transform: scale(1.1);
+}
+
+.btn {
+ 
+  margin:10px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out; 
+}
+
+.btn:hover {
+  transform: scale(1.1);
 }

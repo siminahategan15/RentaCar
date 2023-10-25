@@ -2,11 +2,19 @@
 {
   color:beige;
   background-color:#563c5c;
+  padding-bottom: 10px;
 
 }
-.btn
-{
-    margin:10px;
+.btn {
+ 
+  margin:10px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out; 
+}
+
+.btn:hover {
+  transform: scale(1.1);
 }
 
 .buttons
@@ -17,7 +25,9 @@
   justify-content: center;
  
 }
-label, input
+label, input, select
 {
-  margin-left: 10px;;
+  margin-left: 10px;
 }
+
+

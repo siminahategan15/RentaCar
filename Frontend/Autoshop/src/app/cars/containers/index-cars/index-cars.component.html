@@ -8,7 +8,7 @@
 <h3> Add a Car for renting</h3>
   </div>
   <div>
-<form [formGroup]="carForm" (ngSubmit)="onFormSubmit()" class="card" style="width: 20rem">
+<form [formGroup]="carForm" (ngSubmit)="onFormSubmit()" class="form" style="width: 20rem">
     
    <div style="display: flex;justify-content: center; flex-direction: column;">
     <div class="form-group">
@@ -73,9 +73,6 @@
         </div>
         <div>
         brand: {{car.brand}}
-        </div>
-        <div>
-        year: {{car.productionYear}}
         </div>
       
       </div>

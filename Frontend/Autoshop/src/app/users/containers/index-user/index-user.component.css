@@ -28,9 +28,10 @@
 {
   color:beige;
   background-color:#563c5c;
+  padding-bottom: 10px;
 
 }
-label, input
+label, input, select
 {
   margin-left: 10px;
 }
@@ -46,4 +47,16 @@ div[style="background-color: #e6e6fa;"] {
   justify-content: center;
   flex-direction:column;
  
+}
+
+.btn {
+ 
+  margin:10px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out; 
+}
+
+.btn:hover {
+  transform: scale(1.1);
 }
