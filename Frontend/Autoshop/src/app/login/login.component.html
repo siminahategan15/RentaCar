@@ -34,10 +34,11 @@
             <input type="text" id="Email" [(ngModel)]="email2" name="email2" style="width: 18rem"></p>
             </div>
             <div class="form-group">
-            <label for="Email">Role</label>
-            <p>
-            <input type="text" id="Role" [(ngModel)]="role2" name="role2" style="width: 18rem"></p>
-            </div>
+                <label for="Role">Role</label>
+                <select id="Role" [(ngModel)]="selectedRole" name="role2" style="width: 18rem">
+                  <option *ngFor="let role of roleOptions" [value]="role">{{ role }}</option>
+                </select>
+              </div>
         </ng-container>
 
        

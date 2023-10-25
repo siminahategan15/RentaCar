@@ -14,6 +14,9 @@ export class IndexUserComponent {
   isEditing: boolean = false;
   editingUser!: IUser ;
   userRole:string|null='';
+
+  roleOptions: string[] = ["admin", "user"];
+  selectedRole?: string;
   
   constructor(private userService:UsersService, private router: Router) {
     this.userRole = localStorage.getItem('role');
@@ -48,6 +51,7 @@ export class IndexUserComponent {
   updateUser()
   {
     if (this.editingUser) {
+      this.editingUser.role = this.selectedRole!;
       this.userService.updateUser(this.editingUser.idUser, this.editingUser).subscribe(
         
         
@@ -72,7 +76,7 @@ export class IndexUserComponent {
       this.isEditing = true;
       this.editingUser = { ...user }; 
     }
-    cancelUpdate(): void {
+  cancelUpdate(): void {
       this.isEditing = false;
     }
 

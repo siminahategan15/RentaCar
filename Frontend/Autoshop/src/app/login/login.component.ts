@@ -20,6 +20,9 @@ export class LoginComponent {
     lastName2:string='';
     role2:string='';
 
+    roleOptions: string[] = ["admin", "user"];
+    selectedRole?: string;
+
     constructor(private userService:UsersService, private router:Router, private auth:LoginService) {}
     ngOnInit(): void {
       this.userService.getUsers().subscribe(res => {

@@ -37,9 +37,9 @@
       </div>
       <div class="form-group">
         <label for="Role">Role</label>
-        <p>
-          <input type="text" id="Role" [(ngModel)]="editingUser.role" name="role" style="width: 18rem">
-        </p>
+        <select id="Role" [(ngModel)]="selectedRole" name="role" style="width: 18rem">
+          <option *ngFor="let role of roleOptions" [value]="role">{{ role }}</option>
+        </select>
       </div>
   
       <div class="buttons" style="background-color:#563c5c">
