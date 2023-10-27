@@ -26,6 +26,7 @@ export class LoginService {
     this.loggedInUser = user;
     this.loginEvent.emit(user);
     localStorage.setItem('role', user.role);
+    localStorage.setItem('idUser',user.idUser.toString());
   }
 
   logout() {

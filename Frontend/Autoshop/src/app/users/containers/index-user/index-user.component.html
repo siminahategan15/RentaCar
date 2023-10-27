@@ -69,9 +69,10 @@
         <td>{{ user.lastName }}</td>
         <td class="buttons">
   
-          <button (click)="showUser(user)" type="button" class="btn"  class="btn" style="width: 7rem;" >Show User</button>
-          <button (click)="deleteUser(user)" type="button" class="btn"  class="btn" style="width: 5rem;" >Delete</button>
-          <button (click)="editUser(user)" type="button" class="btn"  class="btn" style="width: 5rem;" >Edit</button>
+          <button (click)="showUser(user)" type="button" class="btn" style="width: 7rem;" >Show User</button>
+          <button (click)="deleteUser(user)" type="button" class="btn"  style="width: 5rem;" >Delete</button>
+          <button (click)="editUser(user)" type="button" class="btn"  style="width: 5rem;" >Edit</button>
+          <button (click)="viewReservations(user)" type="button" class="btn">View Reservations</button>
         </td>
       </tr>
     </tbody>

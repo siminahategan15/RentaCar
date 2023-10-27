@@ -1,6 +1,6 @@
 export interface IUser
 {
-    idUser?:number,
+    idUser:number,
     firstName:string,
     lastName:string,
     userName:string,

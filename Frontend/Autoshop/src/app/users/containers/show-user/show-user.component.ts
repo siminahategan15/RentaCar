@@ -18,6 +18,6 @@ export class ShowUserComponent {
   getUser()
   {
     const id=this.route.snapshot.params['id'];
-    this.UserService.getUser(id).subscribe(response => this.user = response)
+    this.UserService.getUser(id).subscribe(response => this.user = response);
   }
 }

@@ -19,6 +19,7 @@ export class LoginComponent {
     firstName2:string='';
     lastName2:string='';
     role2:string='';
+    idUser2?:number;
 
     roleOptions: string[] = ["admin", "user"];
     selectedRole?: string;
@@ -27,7 +28,6 @@ export class LoginComponent {
     ngOnInit(): void {
       this.userService.getUsers().subscribe(res => {
         this.users =res;
-      console.log(res);
     }
       );
      }
@@ -43,25 +43,28 @@ export class LoginComponent {
 
   onSubmit()
   {
+
     let logged_user:IUser={
-      
-      firstName:this.firstName2,
+      idUser:0,
+    firstName:this.firstName2,
     lastName:this.lastName2,
     userName:this.userName2,
     password:this.password2,
     email:this.email2,
-    role:this.role2
+    role:this.selectedRole!
 
     };
     if(this.is_register)
     {
-     
+      
+
     this.userService.createUser(logged_user).subscribe(
       (res) =>{ this.users.push(res) 
       this.auth.login(res);
       alert('User Logged Succesfully');
       this.router.navigate(['/cars']);
     });
+
   
      
     }else

@@ -1,0 +1,36 @@
+<div style="background-color: #e6e6fa; display:flex; justify-content: center; flex-direction:column">
+    <div style="margin-bottom: 20px;">
+          <h3> {{ name }}'s Reservations </h3>
+          <div class="buttons">
+             <a class="nav-link" [routerLink]="'/users'" class="btn">Back</a>
+         </div>
+    </div>
+    <div style="display:flex;flex-wrap: wrap;justify-content: center; ">
+        <div *ngFor="let car of reservedCars" >
+        <div *ngIf="car">
+          <div class="card text-bg-dark m-2" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">{{car.brand}}</h5>
+                <div class="card-text">
+                
+                <div>
+                model: {{car.model}}
+                </div>
+                <div>
+                brand: {{car.brand}}
+                </div>
+                <div>
+                year: {{car.productionYear}}
+                </div>
+                <div>
+                stock: {{car.stock}}
+                </div>
+              </div>
+              
+              </div>
+              
+            </div>
+          </div>
+        </div>  
+    </div>
+    </div>

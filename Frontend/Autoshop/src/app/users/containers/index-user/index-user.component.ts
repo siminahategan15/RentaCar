@@ -20,13 +20,11 @@ export class IndexUserComponent {
   
   constructor(private userService:UsersService, private router: Router) {
     this.userRole = localStorage.getItem('role');
-    console.log(this.userRole);
   }
 
   ngOnInit(): void {
     this.userService.getUsers().subscribe(res => {
       this.users =res;
-    console.log(res);
   });
 
    }
@@ -79,6 +77,10 @@ export class IndexUserComponent {
   cancelUpdate(): void {
       this.isEditing = false;
     }
+    viewReservations(user: IUser) {
+      this.router.navigate([`/users/reservations/${user.idUser}`]);
+    }
+    
 
   }
    
