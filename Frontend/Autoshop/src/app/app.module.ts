@@ -8,12 +8,13 @@ import { RouterModule } from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { ShowUserComponent } from './users/containers/show-user/show-user.component';
-import { IndexUserComponent } from './users/containers/index-user/index-user.component';//aici
+import { IndexUserComponent } from './users/containers/index-user/index-user.component';
+import { ShowReservationComponent } from './car-reserved/containers/show-reservation/show-reservation.component';//aici
 @NgModule({
   declarations: [
     AppComponent,
     IndexCarsComponent, //aici
-   LoginComponent, ShowUserComponent, IndexUserComponent,// aici 
+   LoginComponent, ShowUserComponent, IndexUserComponent, ShowReservationComponent,// aici 
 
   ],
   imports: [

@@ -11,6 +11,9 @@
           <a class="nav-link active" aria-current="page" [routerLink]="'/cars'" style="color:white">Cars</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="'/reservations'" style="color:white">Reservations</a>
+        </li>
+        <li class="nav-item">
           <a *ngIf="this.logged_user.role=='admin'"class="nav-link active" aria-current="page" [routerLink]="'/users'" style="color:white">Users</a>
         </li>
        </ul>
