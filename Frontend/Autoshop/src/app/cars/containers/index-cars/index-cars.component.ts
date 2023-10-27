@@ -4,6 +4,8 @@ import { CarService } from '../../services/car.service';
 import { ICar } from '../../models/car';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl,  FormGroup } from '@angular/forms';
+import { CarReservedService } from 'src/app/car-reserved/services/car-reserved.service';
+import { LoginService } from 'src/app/login/services/login.service';
 
 @Component({
   selector: 'app-index-cars',
@@ -17,11 +19,15 @@ export class IndexCarsComponent implements OnInit {
 carForm: FormGroup;
   editingCar: ICar|null=null;
   userRole:string|null='';
+  userId:string|null='';
+  reservedCars: ICar[] = [];
 constructor(
     private carService:CarService,
     private router:Router,
     private formBuilder: FormBuilder,
-    private cdr:ChangeDetectorRef
+    private cdr:ChangeDetectorRef,
+    private carReservedService: CarReservedService,
+
     ){
 
       this.carForm = this.formBuilder.group({
@@ -30,8 +36,8 @@ constructor(
         productionYear: 0,
         stock: 0,
       });
+      this.userId = localStorage.getItem('idUser');
       this.userRole = localStorage.getItem('role');
-    console.log(this.userRole);
     
     }
   
@@ -40,9 +46,8 @@ constructor(
     this.carService.getCars().subscribe(res => {
       this.cars =res;
    
-   }
-  
-    )
+   });
+   this.reservedCars = this.carReservedService.getReservedCars(this.userId) || [];
    }
 
    onFormSubmit() {
@@ -87,11 +92,11 @@ constructor(
       const updatedCarData = this.carForm.value;
       this.carService.updateCar(this.editingCar.idCar, updatedCarData).subscribe(
         (res) => {
-          console.log('Update successful. Response:', res);
+         
           const carIndex = this.cars.findIndex((c) => c.idCar === this.editingCar!.idCar);
           if (carIndex !== -1) {
             this.cars[carIndex] = { ...this.cars[carIndex], ...updatedCarData };
-            console.log('Car updated in the list:', this.cars[carIndex]);
+           
           }
           this.editingCar = null;
           this.carForm.reset();
@@ -108,6 +113,8 @@ constructor(
     this.carForm.patchValue(this.editingCar);
   }
   
-   
+  reserveCar(car: ICar) {
+    this.carReservedService.reserveCar(this.userId, car); // Pass the user ID
+  }
 
 }
